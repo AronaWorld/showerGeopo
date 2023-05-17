@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>의견 남기기</title>
+</head>
+<body>
+  <h1>의견 남기기</h1>
+  
+  <form id="opinionForm">
+    <label for="opinion">의견:</label><br>
+    <textarea id="opinion" name="opinion" rows="4" cols="50"></textarea><br>
+    <button type="submit">제출</button>
+  </form>
+  
+  <div id="opinions">
+    <!-- 의견이 표시될 곳 -->
+  </div>
+
+  <script>
+    // 의견 제출 처리
+    document.getElementById('opinionForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // 기본 제출 동작 방지
+      var opinion = document.getElementById('opinion').value;
+      displayOpinion(opinion);
+      document.getElementById('opinion').value = ''; // 의견 입력란 초기화
+    });
+
+    // 의견 표시
+    function displayOpinion(opinion) {
+      var opinionsDiv = document.getElementById('opinions');
+      var opinionElement = document.createElement('p');
+      opinionElement.textContent = opinion;
+      opinionsDiv.appendChild(opinionElement);
+    }
+  </script>
+</body>
+</html>
